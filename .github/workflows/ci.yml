@@ -32,3 +32,9 @@ jobs:
         package-name: andino_base andino_bringup andino_control andino_description andino_firmware andino_hardware andino_slam andino_gz_classic andino_navigation andino_apps
         target-ros2-distro: ${{ env.ROS_DISTRO }}
         import-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        gcov: true
+        gcov_include: '.pio/build/desktop/*'
+        token: ${{ secrets.CODECOV_TOKEN }}
